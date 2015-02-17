@@ -44,3 +44,6 @@ To make shared folders mounting transparent from the host we mount the whole hom
 For example,
 `docker run -v /Users/john/src/play2lead:/myapp`
 mounts `/Users/john/src/play2lead` directory from VMware machine to docker container. The directory on the VMware machine syncs with host automatically.
+
+# Thanks
+To Graeme Mathieson for his [great article on setup vmware fusion + docker](https://woss.name/articles/vagrant-docker-and-vmware-fusion/)
