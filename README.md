@@ -47,9 +47,11 @@ If you get different version of docker between client and server update/downgrad
 ### Shared folders (aka Magic folder)
 To make shared folders mounting transparent from the host we mount the whole home directory under /Users/<USER_NAME>. That way you can just mount folders under home directory without worrying about path difference between host and virtual machine.
 
+The directory on the VMware machine syncs with host automatically. 
 For example,
 `docker run -v /Users/john/src/play2lead:/myapp`
-mounts `/Users/john/src/play2lead` directory from VMware machine to docker container. The directory on the VMware machine syncs with host automatically.
+mounts `/Users/john/src/play2lead` directory from VMware machine to docker container. 
+
 
 # Thanks
 To Graeme Mathieson for his [great article on setup vmware fusion + docker](https://woss.name/articles/vagrant-docker-and-vmware-fusion/)
