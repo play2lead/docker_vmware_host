@@ -3,6 +3,11 @@ This is an alternative to boot2docker to  make it work with vmware fusion until 
 # VMware fusion
 This image requires license for [vmware fusion provider for vagrant](http://www.vagrantup.com/vmware) to create and provision the machine and make sync folders work.
 Creation of the machine can be automated using packer but sync folders is quite a complicated problem to solve without vagrant.
+# Required software (install all of this before proceeding)
+- [Docker client for mac](https://docs.docker.com/installation/mac/) >= 1.5.0
+- [VMWare fusion](http://www.vmware.com/au/products/fusion) >= 7
+- [Vagrant](https://www.vagrantup.com/downloads.html)
+- [vmware fusion provider for vagrant](http://www.vagrantup.com/vmware)
 
 # Usage
 To start initial provisioning use:
