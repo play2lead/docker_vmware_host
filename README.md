@@ -26,7 +26,8 @@ Export it
 
 ```export DOCKER_HOST=tcp://IP_OF_VM:2375```
 
-Or export it permanently (vagrant ip does not change between restarts) via /etc/hosts:
+## To export it permanently
+Vagrant ip does not change between restarts via /etc/hosts:
 ```
 docker.local <IP_OF_VM>
 ```
