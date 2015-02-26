@@ -43,6 +43,10 @@ Git commit (server): a8a31ef
 
 If you get different version of docker between client and server update/downgrade your local version. When you provision the machine it will install the latest docker.
 
+## Docker login
+To use our private images you need to login to docker via your personal account which should be part of play2lead organisation. 
+Use `docker login` to do that before starting to build any repos.
+
 ## Notes
 ### Shared folders (aka Magic folder)
 To make shared folders mounting transparent from the host we mount the whole home directory under /Users/<USER_NAME>. That way you can just mount folders under home directory without worrying about path difference between host and virtual machine.
