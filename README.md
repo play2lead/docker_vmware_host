@@ -25,6 +25,12 @@ Get machine ip from
 Export it
 
 ```export DOCKER_HOST=tcp://IP_OF_VM:2375```
+Or export it permanently (vagrant ip does not change between restarts) via /etc/hosts:
+```
+docker.local <IP_OF_VM>
+```
+Then you can add to your ~/.bashrc/.zshrc
+
 
 ## Check
 To check that all is working do
