@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Share my entire home directory, so I can share various things with
   # individual docker containers.
-  config.vm.synced_folder ENV['HOME'], "/Users/#{ENV['USER']}"
+  config.vm.synced_folder ENV['HOME'], "/Users/#{ENV['USER']}", type: "nfs"
 
   config.vm.provision :shell, inline: <<-SHELL
     curl -sSL https://get.docker.com/ubuntu/ | sudo sh
