@@ -1,5 +1,11 @@
 # Boot2docker
-This is an alternative to boot2docker to  make it work with vmware fusion until official support for fusion shared folders lands in boot2docker or docker/machine. All boot2docker images we have tried so far don't work properly with HGFS which is the most effective way to share folders with vmware fusion.
+This is an alternative to boot2docker to  make it work with vmware fusion until official support for fusion shared folders lands in boot2docker or docker/machine. All boot2docker images we have tried so far don't work properly with HGFS/NFS which is the most effective way to share folders with vmware fusion.
+
+
+You can use Virtual Box(ignore the name of the repo) or VMWare fusion to run this host.
+# Virtual Box
+Virtual box can only be used with NFS but it's still faster than running boot2docker with shared folders.
+
 # VMware fusion
 This image requires license for [vmware fusion provider for vagrant](http://www.vagrantup.com/vmware) to create and provision the machine and make sync folders work.
 Creation of the machine can be automated using packer but sync folders is quite a complicated problem to solve without vagrant.
@@ -12,32 +18,33 @@ Creation of the machine can be automated using packer but sync folders is quite 
 # Usage
 To start initial provisioning use:
 `vagrant up`
-Then you need to point local docker to this docker host. Vagrant will alias vm IP to `docker.local` automatically.
+Then you need to point local docker to this docker host. Vagrant will alias vm IP to `docker.local` automatically, however it doesn't work all the time. 
 
-Then just do
+To check do
+```
+ping docker.local
+```
+If alias worked you get the ip address. 
 
-`export DOCKER_HOST=tcp://docker.local:2375`
-
-## If it doesn't work
-Get machine ip from
-`ping docker.local`
-
-Export it
+Otherwise you need to get the ip via the following command
+```
+vagrant ssh-config | grep HostName | awk '{print $2}'
+```
+Export it for this session usage
 
 ```export DOCKER_HOST=tcp://IP_OF_VM:2375```
 
-## To export it permanently
-Vagrant ip does not change between restarts via /etc/hosts:
+Or export it permanently
 ```
-docker.local <IP_OF_VM>
+echo `vagrant ssh-config | grep HostName | awk '{print $2}'` docker.local | sudo tee -a /etc/hosts
 ```
-Then you can add to your ~/.bashrc/.zshrc
+Then add to your ~/.bashrc/.zshrc
 ```
 export DOCKER_HOST=tcp://docker.local:2375
 ```
 
 ## Check
-To check that all is working do
+To check that all is working do(version might change over time)
 ```
 > docker version
 Client version: 1.5.0
