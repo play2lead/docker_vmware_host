@@ -43,6 +43,18 @@ Then add to your ~/.bashrc/.zshrc
 export DOCKER_HOST=tcp://docker.local:2375
 ```
 
+For **Google Chrome** users:
+
+If you want fast and snappy chrome when using docker.local alias you need to remove ipv6 alias from /etc/hosts otherwise chromes bugs out and becomes really slow.
+In /etc/hosts replace
+```
+::1             localhost
+```
+with
+```
+#::1             localhost
+```
+
 ## Check
 To check that all is working do(version might change over time)
 ```
