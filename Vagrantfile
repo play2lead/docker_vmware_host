@@ -15,6 +15,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     provider.vmx['numvcpus'] = 4
   end
 
+  config.vm.provider "virtualbox" do |v|
+    config.vm.network "private_network", ip: "192.168.50.42"
+  end
+
   # Share my entire home directory, so I can share various things with
   # individual docker containers.
   config.vm.synced_folder ENV['HOME'], "/Users/#{ENV['USER']}", type: "nfs"
