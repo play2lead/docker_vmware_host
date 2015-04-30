@@ -18,13 +18,13 @@ Creation of the machine can be automated using packer but sync folders is quite 
 # Usage
 To start initial provisioning use:
 `vagrant up`
-Then you need to point local docker to this docker host. Vagrant will alias vm IP to `docker.local` automatically, however it doesn't work all the time. 
+Then you need to point local docker to this docker host. Vagrant will alias vm IP to `docker.dev` automatically, however it doesn't work all the time.
 
 To check do
 ```
-ping docker.local
+ping docker.dev
 ```
-If alias worked you get the ip address. 
+If alias worked you get the ip address.
 
 Otherwise you need to get the ip via the following command
 ```
@@ -36,16 +36,16 @@ Export it for this session usage
 
 Or export it permanently
 ```
-echo `vagrant ssh-config | grep HostName | awk '{print $2}'` docker.local | sudo tee -a /etc/hosts
+echo `vagrant ssh-config | grep HostName | awk '{print $2}'` docker.dev | sudo tee -a /etc/hosts
 ```
 Then add to your ~/.bashrc/.zshrc
 ```
-export DOCKER_HOST=tcp://docker.local:2375
+export DOCKER_HOST=tcp://docker.dev:2375
 ```
 
 For **Google Chrome** users:
 
-If you want fast and snappy chrome when using docker.local alias you need to remove ipv6 alias from /etc/hosts otherwise chromes bugs out and becomes really slow.
+If you want fast and snappy chrome when using docker.dev alias you need to remove ipv6 alias from /etc/hosts otherwise chromes bugs out and becomes really slow.
 In /etc/hosts replace
 ```
 ::1             localhost
@@ -73,17 +73,17 @@ Git commit (server): a8a31ef
 If you get different version of docker between client and server update/downgrade your local version. When you provision the machine it will install the latest docker.
 
 ## Docker login
-To use our private images you need to login to docker via your personal account which should be part of play2lead organisation. 
+To use our private images you need to login to docker via your personal account which should be part of play2lead organisation.
 Use `docker login` to do that before starting to build any repos.
 
 ## Notes
 ### Shared folders (aka Magic folder)
 To make shared folders mounting transparent from the host we mount the whole home directory under /Users/<USER_NAME>. That way you can just mount folders under home directory without worrying about path difference between host and virtual machine.
 
-The directory on the VMware machine syncs with host automatically. 
+The directory on the VMware machine syncs with host automatically.
 For example,
 `docker run -v /Users/john/src/play2lead:/myapp`
-mounts `/Users/john/src/play2lead` directory from VMware machine to docker container. 
+mounts `/Users/john/src/play2lead` directory from VMware machine to docker container.
 
 
 # Thanks

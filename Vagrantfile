@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.hostname = 'docker.local'
+  config.vm.hostname = 'docker.dev'
 
   config.vm.box = "phusion/ubuntu-12.04-amd64"
   config.vm.box_version = "2014.05.11"
